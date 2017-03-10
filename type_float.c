@@ -28,17 +28,56 @@ void					type_f(va_list *arg, t_flags *flag)
 
 void				precision_float(char *str, t_flags *flag, int i)
 {
+    while (str[i] != '.' && str[i])
+        i++;
 	if (flag->precision >= TRUE)
 	{
-        while (str[i] != '.' && str[i])
-            i++;
         if (flag->precision > TRUE)
             while (str[i] && flag->precision >= TRUE)
             {
                 i++;
                 flag->precision--;
             }
-        str[i] = '\0';
         flag->precision = FALSE;
 	}
+    else
+    {
+        str = str + i;
+        i = 1;
+        while (i < 7)
+        {
+            if (str[i] < '0' || str[i] > '9')
+                str[i] = '0';
+            i++;
+        }
+    }
+    str[i] = '\0';
+}
+
+void					type_g(va_list *arg, t_flags *flag)
+{
+    char				*str;
+    double				val;
+
+    val = (double)va_arg(*arg, double);
+    if (val < 0 || flag->plus == TRUE || flag->space == TRUE)
+        flag->width--;
+    str = ft_dtoa_base(val, 10, 0);
+    if (flag->precision > TRUE)
+        precision_g(str, flag, 0);
+    str = write_d(str, flag, (int)ft_strlen(str), val);
+    final_write(str, flag);
+}
+
+void				precision_g(char *str, t_flags *flag, int i)
+{
+    while (i < flag->precision && str[i])
+    {
+        if (str[i] == '.')
+            flag->precision++;
+        i++;
+    }
+    if (str[i] > '4' && str[i] <= '9' && str[i - 1] < '9')
+        str[i - 1]++;
+    str[i] = '\0';
 }

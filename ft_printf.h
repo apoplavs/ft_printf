@@ -81,4 +81,6 @@ char			*ft_atol_base(long long value, long long base);
 char			*ft_dtoa_base(double value, int base, int i);
 void			type_f(va_list *arg, t_flags *flag);
 void			precision_float(char *str, t_flags *flag, int i);
+void			type_g(va_list *arg, t_flags *flag);
+void			precision_g(char *str, t_flags *flag, int i);
 #endif

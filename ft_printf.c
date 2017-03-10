@@ -62,6 +62,8 @@ int				determine_type2(char type, va_list *arg, t_flags *flag)
 		type_b(arg, flag);
 	else if (type == 'f' || type == 'F')
 		type_f(arg, flag);
+    else if (type == 'g' || type == 'G')
+        type_g(arg, flag);
 	else
 		return (0);
 	return (1);
