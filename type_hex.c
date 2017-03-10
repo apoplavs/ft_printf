@@ -14,7 +14,7 @@
 
 void					type_x(va_list *arg, t_flags *flag, int fg)
 {
-	char 				*str;
+	char				*str;
 	unsigned long long	val;
 
 	if (flag->mod_ll == TRUE)
@@ -22,11 +22,11 @@ void					type_x(va_list *arg, t_flags *flag, int fg)
 	else if (flag->mod_l == TRUE || flag->mod_j == TRUE || flag->mod_z == TRUE)
 		val = va_arg(*arg, unsigned long);
 	else if (flag->mod_h == TRUE)
-		val = (unsigned short) va_arg(*arg, int);
+		val = (unsigned short)va_arg(*arg, int);
 	else if (flag->mod_hh == TRUE)
-		val = (unsigned char) va_arg(*arg, int);
+		val = (unsigned char)va_arg(*arg, int);
 	else
-		val = (unsigned int) va_arg(*arg, unsigned int);
+		val = (unsigned int)va_arg(*arg, unsigned int);
 	if (flag->width > 1 && flag->sharp == TRUE)
 		flag->width -= 2;
 	if (val == 0 && flag->precision >= TRUE)
@@ -37,11 +37,11 @@ void					type_x(va_list *arg, t_flags *flag, int fg)
 	if (flag->sharp == TRUE && (val > 0 || fg == 2))
 		case_sharp_x(&str);
 	if (fg == 1)
-		to_type_X(str);
+		to_type_lx(str);
 	final_write(str, flag);
 }
 
-void					to_type_X(char *str)
+void					to_type_lx(char *str)
 {
 	int					i;
 
@@ -56,9 +56,9 @@ void					to_type_X(char *str)
 
 void					case_sharp_x(char **str)
 {
-	char 			*p;
-	char            *s;
-	int             i;
+	char				*p;
+	char				*s;
+	int					i;
 
 	i = 0;
 	p = *str;
@@ -75,7 +75,7 @@ void					case_sharp_x(char **str)
 	free(s);
 }
 
-void		        type_p(va_list *arg, t_flags *flag)
+void					type_p(va_list *arg, t_flags *flag)
 {
 	flag->sharp = TRUE;
 	flag->mod_l = TRUE;

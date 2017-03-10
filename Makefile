@@ -32,7 +32,7 @@ LIB = ft_atoi.o ft_bzero.o ft_isalnum.o ft_isalpha.o\
  ft_strtrim.o ft_swap.o ft_tolower.o ft_toupper.o
 
 SRC_NAME = converter_base.o final_write.o ft_printf.o initialize_flags.o\
- type_char.o type_dec.o type_oct.o type_str.o type_hex.o
+ type_char.o type_dec.o type_oct.o type_str.o type_hex.o type_float.o
 
 SRC_LIB = $(addprefix $(LIB_PATH), $(LIB))
 

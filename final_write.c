@@ -16,7 +16,8 @@ int			ft_is_end_spec(char f)
 {
 	if (f && f != 's' && f != 'S' && f != 'p' && f != 'd' && f != 'D'
 		&& f != 'i' && f != 'o' && f != 'O' && f != 'u' && f != 'U'
-		&& f != 'x' && f != 'X' && f != 'c' && f != 'C')
+		&& f != 'x' && f != 'X' && f != 'c' && f != 'C' && f != 'b'
+		&& f != 'n' && f != 'f' && f != 'F' && f != 'a' && f != 'A')
 		return (1);
 	else
 		return (0);

@@ -39,7 +39,7 @@ void			type_s(va_list *arg, t_flags *flag, int i)
 	write_s(str, flag, (int)ft_strlen(str));
 }
 
-void			type_S(va_list *arg, t_flags *flag)
+void			type_ls(va_list *arg, t_flags *flag)
 {
 	char		**str;
 	int			*istr;
@@ -61,22 +61,20 @@ void			type_S(va_list *arg, t_flags *flag)
 			++istr;
 			str[i++] = convert_wchar(*istr);
 		}
-		write_S(str, flag, ft_len_all(str));
+		write_ls(str, flag, ft_len_all(str), 0);
 		while (--i >= 0)
 			free(str[i]);
 		free(str);
 	}
 }
 
-void			write_S(char **str, t_flags *flag, int len)
+void			write_ls(char **str, t_flags *flag, int len, int i)
 {
 	char		*s;
 	char		c;
-	int			i;
 	char		*p;
 
 	c = flag->zero == TRUE ? '0' : ' ';
-	i = 0;
 	s = flag->precision == 0 ? ft_strnew(2) : ft_strdup(*str);
 	if (flag->precision < len && flag->precision != FALSE)
 		while ((int)(ft_strlen(s) + ft_strlen(*str + 1)) < flag->precision)

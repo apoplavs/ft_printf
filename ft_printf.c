@@ -15,7 +15,7 @@
 int				determine_type1(char type, va_list *arg, t_flags *flag)
 {
 	if (type == 'S' || (type == 's' && flag->mod_l == TRUE))
-		type_S(arg, flag);
+		type_ls(arg, flag);
 	else if (type == 's')
 		type_s(arg, flag, 1);
 	else if (type == 'p')
@@ -34,6 +34,8 @@ int				determine_type1(char type, va_list *arg, t_flags *flag)
 		flag->mod_l = TRUE;
 		type_o(arg, flag);
 	}
+	else if (type == 'n')
+		type_n(arg, flag);
 	else
 		return (0);
 	return (1);
@@ -53,9 +55,13 @@ int				determine_type2(char type, va_list *arg, t_flags *flag)
 	else if (type == 'X')
 		type_x(arg, flag, 1);
 	else if (type == 'C' || (type == 'c' && flag->mod_l == TRUE))
-		type_lc(arg, flag);
+		type_c(arg, flag, 0);
 	else if (type == 'c')
 		type_c(arg, flag, 0);
+	else if (type == 'b')
+		type_b(arg, flag);
+	else if (type == 'f' || type == 'F')
+		type_f(arg, flag);
 	else
 		return (0);
 	return (1);
