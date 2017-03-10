@@ -76,8 +76,8 @@ char		*ft_dtoa_base(double value, int base, int i)
     }
     else
     {
-        i = (int)(val * 1000000);
-        str = ft_strjoin(p, ft_atol_base((long long)i, (long long)base));
+        val = (int)(val * 1000000);
+        str = ft_strjoin(p, ft_atol_base((long long)val, (long long)base));
         free(p);
     }
 	return (str);

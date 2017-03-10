@@ -38,20 +38,20 @@ void				precision_float(char *str, t_flags *flag, int i)
                 i++;
                 flag->precision--;
             }
-        flag->precision = FALSE;
 	}
     else
     {
         str = str + i;
-        i = 1;
-        while (i < 7)
+        i = 0;
+        while (++i < 7)
         {
+            if (str[i] == '\0' && str[i + 1] != '\0')
+                str[i + 1] = '\0';
             if (str[i] < '0' || str[i] > '9')
                 str[i] = '0';
-            i++;
         }
     }
-    str[i] = '\0';
+    flag->precision = FALSE;
 }
 
 void					type_g(va_list *arg, t_flags *flag)
@@ -73,11 +73,14 @@ void				precision_g(char *str, t_flags *flag, int i)
 {
     while (i < flag->precision && str[i])
     {
-        if (str[i] == '.')
+        if (str[i] == '.' && str[i + 1] > '0')
             flag->precision++;
+        if (str[i] == '.' && str[i + 1] == '0')
+            break ;
         i++;
     }
     if (str[i] > '4' && str[i] <= '9' && str[i - 1] < '9')
         str[i - 1]++;
     str[i] = '\0';
+    flag->precision = FALSE;
 }
