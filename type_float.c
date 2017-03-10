@@ -51,6 +51,7 @@ void				precision_float(char *str, t_flags *flag, int i)
                 str[i] = '0';
         }
     }
+    str[i] = '\0';
     flag->precision = FALSE;
 }
 
