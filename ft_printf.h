@@ -14,6 +14,15 @@
 # define FT_PRINTF_H
 # define TRUE 0
 # define FALSE -1
+# define NORMAL "\033[0m"
+# define BOLD "\033[0;30m"
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define YELLOW "\033[0;33m"
+# define BLUE "\033[0;34m"
+# define MAGENTA "\033[0;35m"
+# define CYAN "\033[0;36m"
+# define GRAY "\033[0;37m"
 
 # include <stdarg.h>
 # include <unistd.h>
@@ -81,6 +90,5 @@ char			*ft_atol_base(long long value, long long base);
 char			*ft_dtoa_base(double value, int base, int i);
 void			type_f(va_list *arg, t_flags *flag);
 void			precision_float(char *str, t_flags *flag, int i);
-void			type_g(va_list *arg, t_flags *flag);
-void			precision_g(char *str, t_flags *flag, int i);
+void			type_m(va_list *arg, t_flags *flag, int j);
 #endif
