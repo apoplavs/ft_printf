@@ -58,7 +58,7 @@ char		*ft_dtoa_base(double value, int base, int i)
 {
 	char	*str;
 	char	*p;
-    float   val;
+	float	val;
 
 	str = ft_atol_base((long long)value, (long long)base);
 	while (str[i])
@@ -66,20 +66,19 @@ char		*ft_dtoa_base(double value, int base, int i)
 	str[i] = '.';
 	p = str;
 	val = value - (long)value;
-    if (val == 1)
-    {
-        free(p);
-        str = ft_atol_base((long long)value + 1, (long long)base);
-        while (str[i])
-            i++;
-        str[i] = '.';
-    }
-    else
-    {
-        val = (int)(val * 1000000);
-        str = ft_strjoin(p, ft_atol_base((long long)val, (long long)base));
-        free(p);
-
-    }
+	if (val == 1)
+	{
+		free(p);
+		str = ft_atol_base((long long)value + 1, (long long)base);
+		while (str[i])
+			i++;
+		str[i] = '.';
+	}
+	else
+	{
+		val = (int)(val * 1000000);
+		str = ft_strjoin(p, ft_atol_base((long long)val, (long long)base));
+		free(p);
+	}
 	return (str);
 }

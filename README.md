@@ -1,1 +1,1 @@
-# ft_printf
+Represents the printf function in C
